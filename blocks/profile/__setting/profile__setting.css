@@ -1,0 +1,13 @@
+.profile__setting {
+  display: flex;
+  align-items: center;
+}
+
+
+@media screen and (max-width:768px) {
+  .profile__setting {
+    display: grid;
+    grid-template-columns: 189px 0px;
+    align-items: center
+  }
+}

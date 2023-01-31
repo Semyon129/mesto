@@ -1,0 +1,11 @@
+.elements__footer {
+  align-items: center;
+  background-color: #fff;
+  margin: 0;
+  border-radius: 0px 0px 10px 10px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 25px 15px 31px 21px;
+}

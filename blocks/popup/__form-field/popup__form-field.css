@@ -1,0 +1,18 @@
+.popup__form-field {
+  border: none;
+  padding: 0px;
+  width: 100%;
+  margin-bottom: 35px;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 13px;
+}
+
+.popup__form-field:last-child {
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width:768px) {
+  .popup__form-field {
+    margin-bottom: 32px;
+  }
+}

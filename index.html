@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="">
+      <div class="header__line"></div>
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img src="./images/image.svg" alt="" class="profile__avatar">
+        <div class="profile__info">
+          <div class="profile__setting">
+            <h1 class="profile__name profile__name_type_name">Жак-Ив Кусто</h1>
+            <button class="profile__button profile__button_type_about button-hover"></button>
+          </div>
+          <p class="profile__about profile__about_type_about">Исследователь океана</p>
+        </div>
+        <button class="profile__button-add button-hover"></button>
+      </section>
+      <section class="elements">
+        <ul class="elements__grid">
+          <li class="elements__grid-item">
+            <img class="elements__grid-photo" src="./images/karachaevsk.jpg" alt="">
+            <div class="elements__footer">
+              <h2 class="elements__title">Карачаевск</h2>
+              <button class="elements__button button-hover"></button>
+            </div>
+          </li>
+          <li class="elements__grid-item">
+            <img class="elements__grid-photo" src="./images/elbrus.jpg" alt="">
+            <div class="elements__footer">
+              <h2 class="elements__title">Гора Эльбрус</h2>
+              <button class="elements__button button-hover"></button>
+            </div>
+          </li>
+          <li class="elements__grid-item">
+            <img class="elements__grid-photo" src="./images/dombai.jpg" alt="">
+            <div class="elements__footer">
+              <h2 class="elements__title">Домбай</h2>
+              <button class="elements__button button-hover"></button>
+            </div>
+          </li>
+          <li class="elements__grid-item">
+            <img class="elements__grid-photo" src="./images/elbrus.jpg" alt="">
+            <div class="elements__footer">
+              <h2 class="elements__title">Гора Эльбрус</h2>
+              <button class="elements__button button-hover"></button>
+            </div>
+          </li>
+          <li class="elements__grid-item">
+            <img class="elements__grid-photo" src="./images/dombai.jpg" alt="">
+            <div class="elements__footer">
+              <h2 class="elements__title">Домбай</h2>
+              <button class="elements__button button-hover"></button>
+            </div>
+          </li>
+          <li class="elements__grid-item">
+            <img class="elements__grid-photo" src="./images/karachaevsk.jpg" alt="">
+            <div class="elements__footer">
+              <h2 class="elements__title">Карачаево-Черкесск</h2>
+              <button class="elements__button button-hover"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <h3 class="footer__copyright">© 2023 Mesto Russia</h3>
+    </footer>
+    <section class="popup">
+      <div class="popup__container">
+        <button class="popup__close button-hover"></button>
+        <form action="post" class="popup__form">
+          <h2 class="popup__header">Редактировать профиль</h2>
+          <input type="text" class="popup__form-field popup__form-field_type_name" placeholder="Имя" maxlength="30"
+            required>
+
+          <input type="text" class="popup__form-field popup__form-field_type_about" placeholder="О себе" maxlength="30"
+            required>
+          <button type="submit"
+            class="popup__button-submit popup__button-submit_save_about button-hover">Сохранить</button>
+        </form>
+      </div>
+    </section>
+  </div>
+  <script src="./index.js"></script>
+</body>
+
+</html>
