@@ -8,6 +8,6 @@
   .profile__setting {
     display: grid;
     grid-template-columns: 189px 0px;
-    align-items: center
+    align-items: center;
   }
 }
