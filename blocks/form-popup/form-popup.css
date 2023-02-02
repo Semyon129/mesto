@@ -1,11 +1,11 @@
-.popup__form {
+.form-popup {
   margin: 0 auto;
   max-width: calc(100% - 36px*2);
 }
 
 
 @media screen and (max-width:768px) {
-  .popup__form {
-    max-width: calc(100% - 25px*2);
+  .form-popup {
+    max-width: calc(100% - 22px*2);
   }
 }

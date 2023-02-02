@@ -7,6 +7,7 @@
   color: #000000;
   padding-bottom: 54px;
   padding-top: 34px;
+  padding-left: 36px;
 }
 
 @media screen and (max-width:768px) {
@@ -15,5 +16,6 @@
     padding-bottom: 75px;
     font-size: 18px;
     line-height: 22px;
+    padding-left: 22px;
   }
 }
