@@ -2,8 +2,8 @@ let aboutButton = document.querySelector('.profile__button-edit');
 let popup = document.querySelector('.popup');
 let closeButton = popup.querySelector('.popup__close');
 let formElement = document.querySelector('.form-popup');
-let nameInput = document.querySelector('.popup__form-field_type_name');
-let jobInput = document.querySelector('.popup__form-field_type_about');
+let nameInput = document.querySelector('.form-popup__form-field_type_name');
+let jobInput = document.querySelector('.form-popup__form-field_type_about');
 let nameSend = document.querySelector('.profile__name');
 let jobSend = document.querySelector('.profile__about');
 
