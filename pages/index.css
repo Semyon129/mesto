@@ -29,20 +29,7 @@
 @import url(../blocks/card-item/__footer/card-item__footer.css);
 @import url(../blocks/card-item/__title/card-item__title.css);
 @import url(../blocks/card-item/__button-like/card-item__button-like.css);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@import url(../blocks/card-item/__button-like/_active/card-item__button-like_active.css);
+@import url(../blocks/card-item/__button-delete/card-item__button-delete.css);
 @import url(../blocks/form-popup/form-popup.css);
 @import url(../blocks/form-popup/__form-field/form-popup__form-field.css);
