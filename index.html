@@ -33,7 +33,7 @@
 
         <template class="card-template">
           <li class="card-item">
-            <img class="card-item__photo" src="" alt="Карачаево-Черкесск">
+            <img class="card-item__photo" src="#" alt="">
             <button type="button" class="card-item__button-delete button-hover"></button>
             <div class="card-item__footer">
               <h2 class="card-item__title">
@@ -68,7 +68,7 @@
       <div class="popup__container">
         <button type="button" class="popup__close button-hover" id="popup__close_button-card"></button>
         <h2 class="popup__header">Новое место</h2>
-        <form name="popupForm" action="post" class="form-popup" id="formPopupCard">
+        <form name="popupForm" action="post" class="form-popup" id="form-popup_card">
           <input name="textInput" type="text"
             class="form-popup__form-field form-popup__form-field_card form-popup__form-field_type_name"
             placeholder="Название" required>
@@ -77,6 +77,14 @@
             placeholder="Ссылка на картинку" required>
           <button type="submit" class="popup__button-submit popup__button-submit_card button-hover">Сохранить</button>
         </form>
+      </div>
+    </section>
+
+    <section class="popup" id="popup__card_image">
+      <div class="popup__container__image">
+        <button type="button" class="popup__close" id="popup__close_button-image"></button>
+        <img src="#" class="popup__image" alt="">
+        <p class="popup__name"></p>
       </div>
     </section>
 
