@@ -29,9 +29,9 @@ const initialCards = [
 // ------------------------------ Переменные
 
 const aboutButton = document.querySelector('.profile__button-edit');
-const popup = document.querySelector('#popup__profile_add');
+const profilePopup = document.querySelector('#popup__profile_add');
 const closeButtonProfile = document.querySelector('#popup__close_button-profile');
-const formElement = document.querySelector('.form-popup');
+const formElementProfile = document.querySelector('#form-popup_profile');
 const nameInput = document.querySelector('.form-popup__form-field_type_name');
 const jobInput = document.querySelector('.form-popup__form-field_type_about');
 const nameSend = document.querySelector('.profile__name');
@@ -46,35 +46,15 @@ const imagePopupClose = document.querySelector('#popup__close_button-image')
 
 // ------------------------------ Ф-ции попапа профиля 
 
-const toggleOpenPopup = () => {
-  if (popup.classList.contains('popup_opened')) {
-    nameInput.value = `${nameSend.textContent}`;
-    jobInput.value = `${jobSend.textContent}`;
-  }
-  popup.classList.toggle('popup_opened')
-};
-
-const handleAboutButtonClick = () => {
-  toggleOpenPopup();
-};
-
-const handleCloseButtonClick = () => {
-  toggleOpenPopup();
-};
-
-// ------------------------------ Ф-ции попапа добавления карточек
-
-const toggleOpenPopupCard = () => {
-  popupCard.classList.toggle('popup_opened')
+const openPopup = (popup) => {
+  popup.classList.add('popup_opened');
 }
 
-const handleAboutButtonAddClick = () => {
-  toggleOpenPopupCard();
-};
+const closePopup = (popup) => {
+  popup.classList.remove('popup_opened');
+}
 
-const handleCloseButtonAddClick = () => {
-  toggleOpenPopupCard()
-};
+// ------------------------------ Ф-ции попапа добавления карточек
 
 // ------------------------------ Ф-ция открытия попапа рассмотра карточек
 
@@ -165,7 +145,7 @@ function handleFormCardSubmit(evt) {
 
   card.value = '';
   URL.value = '';
-  toggleOpenPopupCard()
+  closePopup(popupCard)
 };
 
 
@@ -184,14 +164,23 @@ const handleFormSubmit = (evt) => {
     jobSend.textContent = `${jobInput.placeholder}`;
   };
 
-  toggleOpenPopup();
+  closePopup(profilePopup);
 }
 
 // ------------------------------ Слушатели
 
-aboutButton.addEventListener('click', handleAboutButtonClick);
-closeButtonProfile.addEventListener('click', handleCloseButtonClick);
-addButton.addEventListener('click', handleAboutButtonAddClick);
-closeButtonCard.addEventListener('click', handleCloseButtonAddClick);
-formElement.addEventListener('submit', handleFormSubmit);
+aboutButton.addEventListener('click', function () {
+  nameInput.value = `${nameSend.textContent}`;
+  jobInput.value = `${jobSend.textContent}`;
+  openPopup(profilePopup)
+});
+closeButtonProfile.addEventListener('click', () => closePopup(profilePopup));
+
+addButton.addEventListener('click', () => openPopup(popupCard));
+closeButtonCard.addEventListener('click', () => closePopup(popupCard));
+
+
+formElementProfile.addEventListener('submit', handleFormSubmit);
+
+
 formElementCard.addEventListener('submit', handleFormCardSubmit);
