@@ -46,6 +46,8 @@ const closeButtonImage = document.querySelector('#popup__close_button-image');
 const card = document.querySelector('.form-popup__form-field_card');
 const url = document.querySelector('.form-popup__form-field_url');
 const cardTemplate = document.querySelector('.card-template').content;
+const popupOpenImage = document.querySelector('#popup__card_image');
+const closeButtons = document.querySelectorAll('.popup__close');
 
 // ------------------------------ Ф-ции попапа профиля 
 
@@ -77,7 +79,6 @@ const createCard = (nameValue, urlValue) => {
   });
 
   const openImages = () => {
-    const popupOpenImage = document.querySelector('#popup__card_image');
     popupOpenImage.querySelector('.popup__name').textContent = nameValue;
     popupOpenImage.querySelector('.popup__image').src = urlValue;
     popupOpenImage.querySelector('.popup__image').alt = nameValue;
@@ -133,9 +134,10 @@ aboutButton.addEventListener('click', function () {
 });
 addButton.addEventListener('click', () => openPopup(popupCard));
 
-closeButtonProfile.addEventListener('click', () => closePopup(profilePopup));
-closeButtonCard.addEventListener('click', () => closePopup(popupCard));
-closeButtonImage.addEventListener('click', () => closePopup(imagePopup));
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 formElementProfile.addEventListener('submit', handleFormSubmit);
 formElementCard.addEventListener('submit', handleFormCardSubmit);
