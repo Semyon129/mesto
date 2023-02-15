@@ -39,7 +39,6 @@ const jobSend = document.querySelector('.profile__about');
 const addButton = document.querySelector('.profile__button-add');
 const popupCard = document.querySelector('#popup__card_add');
 const closeButtonCard = document.querySelector('#popup__close_button-card');
-const CardContainer = document.querySelector('.elements');
 const formElementCard = document.querySelector('#form-popup_card');
 const cardList = document.querySelector('.elements__grid');
 const imagePopup = document.querySelector('#popup__card_image');
@@ -77,14 +76,14 @@ const createCard = (nameValue, urlValue) => {
     evt.target.closest('.card-item').remove();
   });
 
-  const OpenImages = () => {
+  const openImages = () => {
     const popupOpenImage = document.querySelector('#popup__card_image');
     popupOpenImage.querySelector('.popup__name').textContent = nameValue;
     popupOpenImage.querySelector('.popup__image').src = urlValue;
     popupOpenImage.querySelector('.popup__image').alt = nameValue;
     openPopup(imagePopup);
   }
-  cardElement.querySelector('.card-item__photo').addEventListener('click', OpenImages);
+  cardElement.querySelector('.card-item__photo').addEventListener('click', openImages);
 
   return cardElement
 }
