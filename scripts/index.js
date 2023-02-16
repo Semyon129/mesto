@@ -49,6 +49,10 @@ const cardTemplate = document.querySelector('.card-template').content;
 const popupOpenImage = document.querySelector('#popup__card_image');
 const closeButtons = document.querySelectorAll('.popup__close');
 
+const popupImageName = popupOpenImage.querySelector('.popup__name');
+const popupImagePicture = popupOpenImage.querySelector('.popup__image');
+
+
 // ------------------------------ Ф-ции попапа профиля 
 
 const openPopup = (popup) => {
@@ -79,9 +83,10 @@ const createCard = (nameValue, urlValue) => {
   });
 
   const openImages = () => {
-    popupOpenImage.querySelector('.popup__name').textContent = nameValue;
-    popupOpenImage.querySelector('.popup__image').src = urlValue;
-    popupOpenImage.querySelector('.popup__image').alt = nameValue;
+    popupImageName.textContent = nameValue
+    popupImagePicture.src = urlValue;
+    popupImagePicture.alt = nameValue;
+
     openPopup(imagePopup);
   }
   cardElement.querySelector('.card-item__photo').addEventListener('click', openImages);
