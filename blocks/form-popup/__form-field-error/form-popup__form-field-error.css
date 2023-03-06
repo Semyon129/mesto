@@ -1,0 +1,5 @@
+.form-popup__form-field-error {
+  min-height: 30px;
+  opacity: 0;
+  display: block;
+}

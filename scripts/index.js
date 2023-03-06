@@ -26,7 +26,7 @@ const initialCards = [
   }
 ];
 
-// ------------------------------ Переменные
+// ------------------------------ Переменные 
 
 const aboutButton = document.querySelector('.profile__button-edit');
 const profilePopup = document.querySelector('#popup__profile_add');
@@ -48,19 +48,32 @@ const url = document.querySelector('.form-popup__form-field_url');
 const cardTemplate = document.querySelector('.card-template').content;
 const popupOpenImage = document.querySelector('#popup__card_image');
 const closeButtons = document.querySelectorAll('.popup__close');
-
+const popups = document.querySelectorAll('.popup');
+const submitButton = profilePopup.querySelector('.form-popup__button-submit')
 const popupImageName = popupOpenImage.querySelector('.popup__name');
 const popupImagePicture = popupOpenImage.querySelector('.popup__image');
-
 
 // ------------------------------ Ф-ции попапа профиля 
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', handleEscClose)
 }
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
+  document.addEventListener('keydown', handleEscClose)
+}
+
+const handleEscClose = (evt) => {
+  if (evt.key === 'Escape') {
+    const inputs = Array.from(formElementProfile.querySelectorAll('.form-popup__form-field'))
+    inputs.forEach(input => {
+      hiddenErrorForInput(input, validateOptions)
+    })
+    const popupOpened = document.querySelector('.popup_opened')
+    closePopup(popupOpened)
+  }
 }
 
 // ------------------------------ Создание карточки
@@ -74,11 +87,11 @@ const createCard = (nameValue, urlValue) => {
 
   // ------------------------------ Лайк, удаление, открытия карточки
 
-  cardElement.querySelector('.card-item__button-like').addEventListener('click', function (evt) {
+  cardElement.querySelector('.card-item__button-like').addEventListener('click', (evt) => {
     evt.target.classList.toggle('card-item__button-like_active');
   });
 
-  cardElement.querySelector('.card-item__button-delete').addEventListener('click', function (evt) {
+  cardElement.querySelector('.card-item__button-delete').addEventListener('click', (evt) => {
     evt.target.closest('.card-item').remove();
   });
 
@@ -128,21 +141,34 @@ const handleFormSubmit = (evt) => {
   };
 
   closePopup(profilePopup);
+  disableButton(submitButton, validateOptions.inactiveButtonClass)
 }
+
+
 
 // ------------------------------ Слушатели
 
-aboutButton.addEventListener('click', function () {
+popups.forEach((item) => {
+  item.addEventListener('click', (evt) => {
+    const inputs = Array.from(formElementProfile.querySelectorAll('.form-popup__form-field'))
+    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {
+      inputs.forEach(input => {
+        hiddenErrorForInput(input, validateOptions)
+        closePopup(item)
+      })
+      disableButton(submitButton, validateOptions.inactiveButtonClass)
+    }
+  })
+});
+
+
+aboutButton.addEventListener('click', () => {
   nameInput.value = `${nameSend.textContent}`;
   jobInput.value = `${jobSend.textContent}`;
   openPopup(profilePopup)
 });
 addButton.addEventListener('click', () => openPopup(popupCard));
 
-closeButtons.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
-});
-
 formElementProfile.addEventListener('submit', handleFormSubmit);
 formElementCard.addEventListener('submit', handleFormCardSubmit);
+

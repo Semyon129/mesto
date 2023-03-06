@@ -1,0 +1,9 @@
+.form-popup__form-field-error_active {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+  opacity: 1;
+}

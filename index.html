@@ -54,12 +54,19 @@
       <div class="popup__container">
         <button type="button" class="popup__close button-hover" id="popup__close_button-profile"></button>
         <h2 class="popup__header">Редактировать профиль</h2>
-        <form name="popupForm" action="post" class="form-popup" id="form-popup_profile">
-          <input name="textInput" type="text" class="form-popup__form-field form-popup__form-field_type_name"
-            placeholder="Имя" required>
-          <input name="textInput" type="text" class="form-popup__form-field form-popup__form-field_type_about"
-            placeholder="О себе" required>
-          <button type="submit" class="popup__button-submit button-hover">Сохранить</button>
+        <form name="popupForm" action="post" class="form-popup" id="form-popup_profile" novalidate>
+          <div class="form-popup__section">
+            <input name="textInput" type="text" class="form-popup__form-field form-popup__form-field_type_name"
+              id="name-input" placeholder="Имя" minlength="2" maxlength="40" required>
+            <span class="form-popup__form-field-error"></span>
+          </div>
+          <div class="form-popup__section">
+            <input name="textInput" type="text" class="form-popup__form-field form-popup__form-field_type_about"
+              id="about-input" placeholder="О себе" minlength="2" maxlength="200" required>
+            <span class="form-popup__form-field-error"></span>
+
+            <button type="submit" class="form-popup__button-submit button-hover">Сохранить</button>
+          </div>
         </form>
       </div>
     </section>
@@ -69,13 +76,20 @@
         <button type="button" class="popup__close button-hover" id="popup__close_button-card"></button>
         <h2 class="popup__header">Новое место</h2>
         <form name="popupForm" action="post" class="form-popup" id="form-popup_card">
-          <input name="textInput" type="text"
-            class="form-popup__form-field form-popup__form-field_card form-popup__form-field_type_name"
-            placeholder="Название" required>
-          <input name="textInput" type="url"
-            class="form-popup__form-field form-popup__form-field_url form-popup__form-field_type_about"
-            placeholder="Ссылка на картинку" required>
-          <button type="submit" class="popup__button-submit popup__button-submit_card button-hover">Сохранить</button>
+          <div class="form-popup__section">
+            <input name="textInput" type="text"
+              class="form-popup__form-field form-popup__form-field_card form-popup__form-field_type_place"
+              placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="form-popup__form-field-error"></span>
+          </div>
+          <div class="form-popup__section">
+            <input name="textInput" type="url"
+              class="form-popup__form-field form-popup__form-field_url form-popup__form-field_type_url"
+              placeholder="Ссылка на картинку" required>
+            <span class="form-popup__form-field-error"></span>
+            <button type="submit"
+              class="form-popup__button-submit form-popup__button-submit_card button-hover">Сохранить</button>
+          </div>
         </form>
       </div>
     </section>
@@ -89,6 +103,7 @@
     </section>
 
   </div>
+  <script async src="./scripts/validate.js"></script>
   <script async src="./scripts/index.js"></script>
 </body>
 
