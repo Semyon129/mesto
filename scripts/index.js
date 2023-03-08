@@ -49,9 +49,13 @@ const cardTemplate = document.querySelector('.card-template').content;
 const popupOpenImage = document.querySelector('#popup__card_image');
 const closeButtons = document.querySelectorAll('.popup__close');
 const popups = document.querySelectorAll('.popup');
-const submitButton = profilePopup.querySelector('.form-popup__button-submit')
+const profileSubmitButton = document.querySelector('.form-popup__button-submit')
+const cardSubmitButton = popupCard.querySelector('.form-popup__button-submit_card')
+
 const popupImageName = popupOpenImage.querySelector('.popup__name');
 const popupImagePicture = popupOpenImage.querySelector('.popup__image');
+
+const inputs = document.querySelectorAll('.form-popup__form-field');
 
 // ------------------------------ Ф-ции попапа профиля 
 
@@ -62,15 +66,11 @@ const openPopup = (popup) => {
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  document.addEventListener('keydown', handleEscClose)
+  document.removeEventListener('keydown', handleEscClose)
 }
 
 const handleEscClose = (evt) => {
   if (evt.key === 'Escape') {
-    const inputs = Array.from(formElementProfile.querySelectorAll('.form-popup__form-field'))
-    inputs.forEach(input => {
-      hiddenErrorForInput(input, validateOptions)
-    })
     const popupOpened = document.querySelector('.popup_opened')
     closePopup(popupOpened)
   }
@@ -80,10 +80,11 @@ const handleEscClose = (evt) => {
 
 const createCard = (nameValue, urlValue) => {
   const cardElement = cardTemplate.cloneNode(true);
+  const cardItem = cardElement.querySelector('.card-item__photo')
 
   cardElement.querySelector('.card-item__title').textContent = nameValue;
-  cardElement.querySelector('.card-item__photo').src = urlValue;
-  cardElement.querySelector('.card-item__photo').alt = nameValue;
+  cardItem.src = urlValue;
+  cardItem.alt = nameValue;
 
   // ------------------------------ Лайк, удаление, открытия карточки
 
@@ -95,14 +96,14 @@ const createCard = (nameValue, urlValue) => {
     evt.target.closest('.card-item').remove();
   });
 
-  const openImages = () => {
+  const openImage = () => {
     popupImageName.textContent = nameValue
     popupImagePicture.src = urlValue;
     popupImagePicture.alt = nameValue;
 
     openPopup(imagePopup);
   }
-  cardElement.querySelector('.card-item__photo').addEventListener('click', openImages);
+  cardItem.addEventListener('click', openImage);
 
   return cardElement
 }
@@ -122,26 +123,20 @@ const handleFormCardSubmit = (evt) => {
 
   evt.target.reset()
   closePopup(popupCard)
+
+  if (card.textContent === '' || url.textContent === '') {
+    disableButton(cardSubmitButton, validateOptions.inactiveButtonClass)
+  };
 };
 
 
-const handleFormSubmit = (evt) => {
+const handleProfileFormSubmit = (evt) => {
   evt.preventDefault();
 
-  if (nameInput.value != "") {
-    nameSend.textContent = `${nameInput.value}`;
-  } else {
-    nameSend.textContent = `${nameInput.placeholder}`;
-  };
-
-  if (jobInput.value != "") {
-    jobSend.textContent = `${jobInput.value}`;
-  } else {
-    jobSend.textContent = `${jobInput.placeholder}`;
-  };
+  nameSend.textContent = `${nameInput.value}`;
+  jobSend.textContent = `${jobInput.value}`;
 
   closePopup(profilePopup);
-  disableButton(submitButton, validateOptions.inactiveButtonClass)
 }
 
 
@@ -150,13 +145,8 @@ const handleFormSubmit = (evt) => {
 
 popups.forEach((item) => {
   item.addEventListener('click', (evt) => {
-    const inputs = Array.from(formElementProfile.querySelectorAll('.form-popup__form-field'))
     if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {
-      inputs.forEach(input => {
-        hiddenErrorForInput(input, validateOptions)
-        closePopup(item)
-      })
-      disableButton(submitButton, validateOptions.inactiveButtonClass)
+      closePopup(item)
     }
   })
 });
@@ -169,6 +159,18 @@ aboutButton.addEventListener('click', () => {
 });
 addButton.addEventListener('click', () => openPopup(popupCard));
 
-formElementProfile.addEventListener('submit', handleFormSubmit);
+formElementProfile.addEventListener('submit', handleProfileFormSubmit);
 formElementCard.addEventListener('submit', handleFormCardSubmit);
+
+
+/* деактивируем кнопку при 1й загрузке сайта
+toggleButtonState(profileSubmitButton, validateOptions.inactiveButtonClass);
+
+formElementProfile.addEventListener('reset', () => {
+  // `setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стэка) и только потом вызвать `toggleButtonState`
+  setTimeout(() => {
+    toggleButtonState(profileSubmitButton, validateOptions.inactiveButtonClass);
+  }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
+});
+*/
 

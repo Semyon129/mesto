@@ -38,15 +38,12 @@ const toggleInputState = (inputElement, validateOptions) => {
   };
 };
 
-const hiddenErrorForInput = (inputElement, validateOptions) => {
-  const errorElement = findInputErrorElement(inputElement, validateOptions)
-  hiddenError(errorElement, validateOptions.errorClass, inputElement, validateOptions.formErrorClass);
-};
-
 const toggleButtonState = (inputs, buttonElement, inactiveButtonClass) => {
   const formIsValid = inputs.every((inputElement) => {
     return inputElement.validity.valid;
   });
+
+
 
   if (formIsValid) {
     enableButton(buttonElement, inactiveButtonClass)
