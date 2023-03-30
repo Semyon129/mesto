@@ -37,7 +37,7 @@
 @import url(../blocks/popup/__name/popup__name.css);
 
 @import url(../blocks/form-popup/__form-field-error/form-popup__form-field-error.css);
-@import url(../blocks/form-popup/__form-field-error/_active/form-popup__form-field-error_active.css);
+@import url(../blocks/form-popup/__form-field-error/_active/form-popup__form-field-error.css);
 
 @import url(../blocks/form-popup/__button-submit/form-popup__button-submit.css);
 @import url(../blocks/form-popup/__button-submit/_inactive/form-popup__button-submit_inactive.css);
