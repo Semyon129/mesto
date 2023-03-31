@@ -3,8 +3,9 @@ class FormValidator {
     this._validateOptions = validateOptions;
     this._formElement = formElement;
 
-    this._submitButton = this._formElement.querySelector(this._validateOptions.submitButtonSelector)
-    this._inputs = Array.from(this._formElement.querySelectorAll(this._validateOptions.inputSelector)); //массив всех инпутов
+    this._submitButton = this._formElement.querySelector(this._validateOptions.submitButtonSelector);
+    this._inputs = Array.from(this._formElement.querySelectorAll(this._validateOptions.inputSelector));
+    this._formElementCard = document.querySelector('#form-popup_card');
   }
 
   _hiddenError = (inputItem) => {
@@ -54,14 +55,37 @@ class FormValidator {
   };
 
   _setEventListeners = () => {
+    this._toggleButtonState();
     this._inputs.forEach((inputItem) => {
       inputItem.addEventListener('input', () => {
         this._toggleInputState(inputItem);
         this._toggleButtonState();
       });
     });
-    this._toggleButtonState();
+
+    this._formElementCard.addEventListener('reset', () => {
+      setTimeout(() => {
+        this._toggleButtonState();
+      }, 0);
+    });
   };
+
+  removeValidationErrors = (form, options) => {
+    _inputs = Array.from(form.queryselectorAll(" form text"));
+    inputs.forEach((input) => {
+      this._errorText = form.querySelector(`.${inputItem.id}-error`);
+
+      if (form
+        .querySelector(' .${input. idf-error')
+        .classList.contains(options.inputErrorClass)
+      ) {
+        hideError(errorText, input, options);
+      }
+
+    })
+  }
+
+
 
   enableValidation = () => {
     this._setEventListeners();
@@ -69,4 +93,3 @@ class FormValidator {
 }
 
 export { FormValidator };
-
